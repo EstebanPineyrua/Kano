@@ -1,4 +1,4 @@
-const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSvmtvtq9GWGnjmmOiEU9j_3JRxhj5bEYsrwSdW5kEuGgJkrc0ybApBjoTHW_s7n9mrzYT5htkoVF-9/pub?gid=0&single=true&output=tsv';
+const url = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vSvmtvtq9GWGnjmmOiEU9j_3JRxhj5bEYsrwSdW5kEuGgJkrc0ybApBjoTHW_s7n9mrzYT5htkoVF-9/pub?output=csv';
 
     fetch(url)
       .then(res => res.text())
