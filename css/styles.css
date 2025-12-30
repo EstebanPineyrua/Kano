@@ -1,24 +1,12 @@
-:root { 
-    --azul: #3a8ed5; 
-    --verde: #27ae60; 
-    --verde-claro: #d4e9d2; 
-    --dark: #33475b; 
-    --fondo: #f0f2f5; 
-}
+:root { --azul: #3a8ed5; --dark: #33475b; --fondo: #f0f2f5; }
 
 body { 
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
-    background-color: var(--fondo); 
-    margin: 0; 
-    padding: 10px; 
-    display: flex; 
-    flex-direction: column; 
-    align-items: center;
+    font-family: sans-serif; background-color: var(--fondo); 
+    margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center;
 }
 
 h1 { color: var(--dark); font-size: 1.5rem; margin: 15px 0; font-weight: 800; }
 
-/* Tarjeta de Control */
 .main-card {
     background: white; width: 95%; max-width: 500px;
     padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
