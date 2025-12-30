@@ -1,59 +1,110 @@
-:root { --azul: #3a8ed5; --dark: #33475b; --fondo: #f0f2f5; }
-
-body { 
-    font-family: sans-serif; background-color: var(--fondo); 
-    margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center;
+:root { 
+    --azul: #3a8ed5; 
+    --dark: #33475b; 
+    --fondo: #f0f2f5; 
 }
 
-h1 { color: var(--dark); font-size: 1.5rem; margin: 15px 0; font-weight: 800; }
+body { 
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
+    background-color: var(--fondo); 
+    margin: 0; 
+    padding: 10px; 
+    /* Evitamos que el cuerpo entero rebote para que el scroll sea solo en la tabla */
+    overflow-x: hidden; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center;
+}
 
+h1 { color: var(--dark); font-size: 1.4rem; margin: 15px 0; font-weight: 800; text-align: center; }
+
+/* Tarjeta de Login */
 .main-card {
     background: white; width: 95%; max-width: 500px;
     padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-bottom: 15px; text-align: center;
+    margin-bottom: 20px; text-align: center; box-sizing: border-box;
 }
 
 #status-msg { margin-bottom: 10px; font-weight: bold; font-size: 0.8rem; color: #27ae60; }
 
 .input-login {
-    width: 85%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; font-size: 1rem;
+    width: 90%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; font-size: 1rem;
 }
 
 .btn-entrar {
-    background: var(--dark); color: white; border: none; width: 90%; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;
+    background: var(--dark); color: white; border: none; width: 95%; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;
 }
 
-/* TABLA ANCHA */
+/* LA SOLUCIÓN AL SCROLL */
 .tabla-container {
-    background: white; width: 100%; max-width: 800px; 
-    border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    background: white; 
+    width: 100vw; /* Ocupa todo el ancho de la pantalla del móvil */
+    max-width: 900px; 
+    margin: 0 -10px; /* Compensa el padding del body para llegar a los bordes */
+    overflow-x: auto; /* Habilita el scroll horizontal */
+    overflow-y: hidden;
+    /* ESTO ES CLAVE PARA CELULARES */
+    -webkit-overflow-scrolling: touch; 
+    display: block;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-table { width: 100%; border-collapse: collapse; }
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+    /* Forzamos que la tabla sea ancha para que se vea obligada a scrollear */
+    min-width: 600px; 
+}
 
 thead { background-color: var(--azul); color: white; }
-th { padding: 15px 10px; font-size: 0.85rem; text-transform: uppercase; }
+th { padding: 15px 10px; font-size: 0.8rem; text-transform: uppercase; white-space: nowrap; }
 
+/* Configuración de celdas */
 td { 
-    padding: 12px 5px; border-bottom: 1px solid #f5f5f5; text-align: center; 
-    word-wrap: break-word; 
+    padding: 15px 8px; 
+    border-bottom: 1px solid #f0f0f0; 
+    text-align: center; 
+    vertical-align: middle;
+    /* Mantenemos el texto en una línea para que el scroll tenga sentido */
+    white-space: nowrap; 
 }
 
 .input-tab {
-    width: 100%; border: none; background: transparent;
-    text-align: center; font-size: 0.95rem; color: #333; padding: 5px 0;
+    width: 100%; 
+    border: none; 
+    background: transparent;
+    text-align: center; 
+    font-size: 1rem; 
+    color: #333; 
+    outline: none;
+    font-family: inherit;
 }
 
+/* Columna de Producto un poco más ancha para que luzca */
+th:nth-child(2), td:nth-child(2) { min-width: 250px; text-align: center; }
+
+/* Botón VER */
 .ver-link {
-    display: inline-block; background: #eee; color: var(--dark);
-    padding: 5px 10px; border-radius: 4px; text-decoration: none;
-    font-size: 0.75rem; font-weight: bold; border: 1px solid #ccc;
+    display: inline-block; background: #f8f9fa; color: var(--dark);
+    padding: 8px 15px; border-radius: 6px; text-decoration: none;
+    font-size: 0.75rem; font-weight: bold; border: 1px solid #ddd;
+    cursor: pointer !important;
 }
 
-.admin-btns { display: flex; gap: 10px; width: 100%; margin-bottom: 10px; }
-.btn-act { flex: 1; padding: 12px; border-radius: 8px; border: none; color: white; font-weight: bold; }
-.btn-x { background: #ffeded; color: #ff4d4d; border: 1px solid #ffcccc; padding: 5px 8px; border-radius: 4px; cursor: pointer; }
-.btn-logout { background: none; border: none; color: #888; cursor: pointer; font-size: 0.8rem; margin-top: 10px; }
+/* Controles Admin */
+.admin-btns { display: flex; gap: 10px; width: 90%; margin: 10px auto; }
+.btn-act { flex: 1; padding: 12px; border-radius: 8px; border: none; color: white; font-weight: bold; cursor: pointer !important; }
+#btn-save { background: #27ae60; }
+.btn-x { background: #ffeded; color: #ff4d4d; border: 1px solid #ffcccc; padding: 6px 12px; border-radius: 5px; cursor: pointer !important; }
 
 .bld { font-weight: 700; }
 input:disabled { opacity: 1; -webkit-text-fill-color: #000; color: #000; }
+
+/* BARRA DE SCROLL VISIBLE EN MÓVIL (Para saber que hay más) */
+.tabla-container::-webkit-scrollbar {
+    height: 6px;
+}
+.tabla-container::-webkit-scrollbar-thumb {
+    background: #cbd5e0;
+    border-radius: 10px;
+}
