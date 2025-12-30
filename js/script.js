@@ -14,46 +14,42 @@ const db = firebase.database();
 let stockData = [];
 let isAdmin = false;
 
-// Sincronización en tiempo real
 db.ref("productos").on("value", (snapshot) => {
     const data = snapshot.val();
     stockData = data ? Object.values(data) : [];
     renderTabla();
     document.getElementById('loading').style.display = 'none';
-    document.getElementById('status-msg').innerHTML = "🟢 <span style='color:black'>Conectado y Sincronizado</span>";
+    document.getElementById('status-msg').innerHTML = "🟢 Conectado y Sincronizado";
 });
 
 function activarModoAdmin() {
     const pass = document.getElementById('admin-pass').value;
-    if (btoa(pass) === "TWVraQ==") { 
+    if (btoa(pass) === "TWVraQ==") {
         isAdmin = true;
         document.getElementById('admin-controls').style.display = 'flex';
-        document.getElementById('admin-pass').style.display = 'none';
-        document.getElementById('btn-login').style.display = 'none';
+        document.getElementById('login-box').style.display = 'none';
         document.getElementById('col-acciones').style.display = 'table-cell';
         renderTabla();
-    } else {
-        alert("Clave incorrecta");
-    }
+    } else { alert("Clave incorrecta"); }
 }
 
 function renderTabla() {
     const tbody = document.getElementById('tabla-body');
     tbody.innerHTML = "";
+    
     stockData.forEach((item, i) => {
         const row = document.createElement('tr');
-        if(isAdmin) row.classList.add('editing');
-
+        
         let linkCol = isAdmin 
-            ? `<input class="editable" value="${item.url || ''}" placeholder="Pegar URL aquí" onchange="stockData[${i}].url=this.value">`
-            : (item.url ? `<a href="${item.url}" target="_blank" class="ver-link">VER PRODUCTO</a>` : "-");
+            ? `<input class="input-tab" value="${item.url || ''}" placeholder="URL" onchange="stockData[${i}].url=this.value">`
+            : (item.url ? `<a href="${item.url}" target="_blank" class="ver-link">VER</a>` : "-");
 
         row.innerHTML = `
-            <td><input class="editable" value="${item.marca || ''}" ${isAdmin?'':'disabled'} onchange="stockData[${i}].marca=this.value"></td>
-            <td><input class="editable" value="${item.producto || ''}" ${isAdmin?'':'disabled'} onchange="stockData[${i}].producto=this.value"></td>
-            <td><input type="number" class="editable" value="${item.stock || 0}" ${isAdmin?'':'disabled'} onchange="stockData[${i}].stock=Number(this.value)"></td>
+            <td><input class="input-tab bld" value="${item.marca || ''}" ${isAdmin?'':'disabled'} onchange="stockData[${i}].marca=this.value"></td>
+            <td><input class="input-tab" value="${item.producto || ''}" ${isAdmin?'':'disabled'} onchange="stockData[${i}].producto=this.value"></td>
+            <td><input type="number" class="input-tab bld" value="${item.stock || 0}" ${isAdmin?'':'disabled'} onchange="stockData[${i}].stock=Number(this.value)"></td>
             <td>${linkCol}</td>
-            ${isAdmin ? `<td><button onclick="eliminarFila(${i})" class="btn-del">🗑️</button></td>` : ''}
+            ${isAdmin ? `<td><button onclick="eliminarFila(${i})" class="btn-x">✕</button></td>` : ''}
         `;
         tbody.appendChild(row);
     });
@@ -65,7 +61,7 @@ function agregarFila() {
 }
 
 function eliminarFila(i) {
-    if(confirm("¿Eliminar este producto permanentemente?")) {
+    if(confirm("¿Eliminar permanentemente?")) {
         stockData.splice(i, 1);
         renderTabla();
     }
@@ -74,13 +70,11 @@ function eliminarFila(i) {
 async function guardarCambios() {
     if (!isAdmin) return;
     const btn = document.getElementById('btn-save');
-    btn.innerText = "⏳ Guardando...";
+    btn.innerText = "⏳...";
     try {
         await db.ref("productos").set(stockData);
-        alert("✅ Stock actualizado correctamente");
-    } catch (e) {
-        alert("Error: " + e.message);
-    }
+        alert("✅ Stock actualizado");
+    } catch (e) { alert("Error: " + e.message); }
     btn.innerText = "💾 Guardar";
 }
 

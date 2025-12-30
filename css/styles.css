@@ -1,110 +1,59 @@
-:root { 
-    --primary: #3498db; 
-    --success: #27ae60; 
-    --danger: #e74c3c; 
-    --white: #ffffff; 
-    --dark: #2c3e50; /* Color oscuro para textos */
-}
+:root { --azul: #3a8ed5; --dark: #33475b; --fondo: #f0f2f5; }
 
 body { 
-    font-family: 'Segoe UI', system-ui, sans-serif; 
-    background: #f4f7f6; 
-    padding: 10px; 
-    margin: 0 auto; 
-    max-width: 900px; 
-    color: var(--dark); 
+    font-family: sans-serif; background-color: var(--fondo); 
+    margin: 0; padding: 10px; display: flex; flex-direction: column; align-items: center;
 }
 
-h1 { text-align: center; color: var(--dark); margin: 20px 0; font-size: 1.8rem; }
+h1 { color: var(--dark); font-size: 1.5rem; margin: 15px 0; font-weight: 800; }
 
-/* Panel de Admin */
-#admin-panel { 
-    background: white; 
-    padding: 15px; 
-    border-radius: 12px; 
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); 
-    margin-bottom: 20px; 
-    display: flex; 
-    flex-direction: column; 
-    gap: 10px; 
-    align-items: center; 
+.main-card {
+    background: white; width: 95%; max-width: 500px;
+    padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 15px; text-align: center;
 }
 
-#admin-controls { display: flex; flex-wrap: wrap; gap: 8px; width: 100%; justify-content: center; }
+#status-msg { margin-bottom: 10px; font-weight: bold; font-size: 0.8rem; color: #27ae60; }
 
-input[type="password"] { 
-    padding: 12px; 
-    border: 2px solid #ddd; 
-    border-radius: 8px; 
-    width: 100%; 
-    max-width: 300px; 
-    font-size: 1rem;
-    color: black;
+.input-login {
+    width: 85%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; font-size: 1rem;
 }
 
-button { 
-    padding: 12px 18px; 
-    border: none; 
-    border-radius: 8px; 
-    font-weight: bold; 
-    cursor: pointer; 
-    color: white; 
-    transition: 0.2s; 
-    font-size: 0.9rem;
+.btn-entrar {
+    background: var(--dark); color: white; border: none; width: 90%; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;
 }
 
-.btn-login { background: var(--dark); width: 100%; max-width: 300px; }
-.btn-save { background: var(--success); flex: 1; min-width: 120px; }
-.btn-add { background: var(--primary); flex: 1; min-width: 120px; }
-.btn-logout { background: #7f8c8d; }
-.btn-del { background: var(--danger); padding: 6px 10px; }
-
-/* Tabla y Contenedor */
-.table-container { 
-    overflow-x: auto; 
-    background: white; 
-    border-radius: 12px; 
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05); 
+/* TABLA ANCHA */
+.tabla-container {
+    background: white; width: 100%; max-width: 800px; 
+    border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-table { width: 100%; border-collapse: collapse; min-width: 500px; }
-th { background: var(--primary); color: white; padding: 12px; text-align: left; font-size: 0.9rem; }
-td { padding: 12px; border-bottom: 1px solid #eee; color: black; font-weight: 500; }
+table { width: 100%; border-collapse: collapse; }
 
-/* Inputs de edición */
-.editable { 
-    width: 100%; 
-    border: 1px solid transparent; 
-    background: transparent;  
-    color: black; 
-    font-size: 1rem;
-}
-.editing .editable { border: 1px solid #ccc; background: #fff; border-radius: 4px; }
+thead { background-color: var(--azul); color: white; }
+th { padding: 15px 10px; font-size: 0.85rem; text-transform: uppercase; }
 
-/* BOTÓN VER PRODUCTO MEJORADO */
-.ver-link { 
-    display: inline-block;
-    color: black !important; /* Texto en negro */
-    font-weight: bold; 
-    text-decoration: none; 
-    border: 2px solid var(--primary); 
-    padding: 8px 12px; 
-    border-radius: 6px; 
-    font-size: 0.8rem; 
-    text-align: center;
-    background: white;
-    white-space: nowrap;
+td { 
+    padding: 12px 5px; border-bottom: 1px solid #f5f5f5; text-align: center; 
+    word-wrap: break-word; 
 }
 
-.ver-link:active { background: var(--primary); color: white !important; }
-
-#loading { text-align: center; margin: 20px; font-weight: bold; color: var(--primary); }
-#status-msg { text-align: center; margin-bottom: 10px; font-weight: bold; font-size: 1rem; color: var(--dark); }
-
-/* Ajustes para Celular */
-@media (max-width: 600px) {
-    body { padding: 5px; }
-    h1 { font-size: 1.5rem; }
-    td, th { padding: 10px 5px; font-size: 0.85rem; }
-    .ver-link { padding: 6px 8px; width: 100%; box-sizing: border-box; }
+.input-tab {
+    width: 100%; border: none; background: transparent;
+    text-align: center; font-size: 0.95rem; color: #333; padding: 5px 0;
 }
+
+.ver-link {
+    display: inline-block; background: #eee; color: var(--dark);
+    padding: 5px 10px; border-radius: 4px; text-decoration: none;
+    font-size: 0.75rem; font-weight: bold; border: 1px solid #ccc;
+}
+
+.admin-btns { display: flex; gap: 10px; width: 100%; margin-bottom: 10px; }
+.btn-act { flex: 1; padding: 12px; border-radius: 8px; border: none; color: white; font-weight: bold; }
+.btn-x { background: #ffeded; color: #ff4d4d; border: 1px solid #ffcccc; padding: 5px 8px; border-radius: 4px; cursor: pointer; }
+.btn-logout { background: none; border: none; color: #888; cursor: pointer; font-size: 0.8rem; margin-top: 10px; }
+
+.bld { font-weight: 700; }
+input:disabled { opacity: 1; -webkit-text-fill-color: #000; color: #000; }
