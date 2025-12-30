@@ -1,31 +1,49 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Stock Kano</title>
-  <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock</title>
+    <link rel="shortcut icon" href="logo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <div class="container text-center">
-  <div class="row row-cols-1">
-    <div class="col"><img src="logo.png" alt="logo"></div>
-  </div>
-</div>
-  <h2>Kano 🏕️</h2>
-  <table id="tablaStock">
-    <thead>
-      <tr>
-        <th>Marca</th>
-        <th>Modelo</th>
-        <th>Stock</th>
-        <th>URL</th>
-      </tr>
-    </thead>
-    <tbody></tbody>
-  </table>
 
-<script src="js/stock.js"></script>
+    <h1>Gestion de stock de Kano 📦</h1>
+
+    <div id="status-msg">Iniciando conexión...</div>
+
+    <div id="admin-panel">
+        <input type="password" id="admin-pass" placeholder="Clave de acceso">
+        <button onclick="activarModoAdmin()" id="btn-login" class="btn-login">🔓 Entrar</button>
+        
+        <div id="admin-controls" style="display:none; gap:10px;">
+            <button onclick="agregarFila()" class="btn-add">➕ Nuevo</button>
+            <button onclick="guardarCambios()" id="btn-save" class="btn-save">💾 Guardar</button>
+            <button onclick="cerrarSesion()" class="btn-logout">🚪 Salir</button>
+        </div>
+    </div>
+
+    <div id="loading">Sincronizando con Google Firebase...</div>
+
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Marca</th>
+                    <th>Producto</th>
+                    <th>Stock</th>
+                    <th>Ver Producto</th>
+                    <th id="col-acciones" style="display:none;">Acciones</th>
+                </tr>
+            </thead>
+            <tbody id="tabla-body"></tbody>
+        </table>
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.15.0/firebase-database-compat.js"></script>
+    
+    <script src="js/script.js"></script>
 </body>
 </html>
