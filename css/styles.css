@@ -20,124 +20,52 @@ h1 { color: var(--dark); font-size: 1.5rem; margin: 15px 0; font-weight: 800; }
 
 /* Tarjeta de Control */
 .main-card {
-    background: white; 
-    width: 95%; 
-    max-width: 500px;
-    padding: 20px; 
-    border-radius: 12px; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-    margin-bottom: 15px; 
-    text-align: center;
+    background: white; width: 95%; max-width: 500px;
+    padding: 20px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    margin-bottom: 15px; text-align: center;
 }
 
-#status-msg { margin-bottom: 10px; font-weight: bold; font-size: 0.8rem; color: var(--verde); }
+#status-msg { margin-bottom: 10px; font-weight: bold; font-size: 0.8rem; color: #27ae60; }
 
 .input-login {
-    width: 85%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; 
-    margin-bottom: 15px; font-size: 1rem; outline: none;
-}
-
-/* BOTONES GENERALES */
-button, .ver-link {
-    cursor: pointer !important; /* El dedo para hacer click */
-    transition: all 0.2s ease;
-    border: none;
-    font-family: inherit;
+    width: 85%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; margin-bottom: 15px; font-size: 1rem;
 }
 
 .btn-entrar {
-    background: var(--dark); 
-    color: white; 
-    width: 90%; 
-    padding: 12px; 
-    border-radius: 8px; 
-    font-weight: bold;
+    background: var(--dark); color: white; border: none; width: 90%; padding: 12px; border-radius: 8px; font-weight: bold; cursor: pointer;
 }
 
-.btn-entrar:active { transform: scale(0.98); }
-
-/* TABLA ANCHA Y RESPONSIVA */
+/* TABLA ANCHA */
 .tabla-container {
-    background: white; 
-    width: 100%; 
-    max-width: 850px; /* Un poco más ancha para Stock */
-    border-radius: 10px; 
-    overflow-x: auto; 
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    background: white; width: 100%; max-width: 800px; 
+    border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05);
 }
 
-table { width: 100%; border-collapse: collapse; min-width: 500px; }
+table { width: 100%; border-collapse: collapse; }
 
 thead { background-color: var(--azul); color: white; }
-th { padding: 15px 10px; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.5px; }
+th { padding: 15px 10px; font-size: 0.85rem; text-transform: uppercase; }
 
 td { 
-    padding: 12px 5px; 
-    border-bottom: 1px solid #f5f5f5; 
-    text-align: center; 
+    padding: 12px 5px; border-bottom: 1px solid #f5f5f5; text-align: center; 
     word-wrap: break-word; 
 }
 
 .input-tab {
     width: 100%; border: none; background: transparent;
     text-align: center; font-size: 0.95rem; color: #333; padding: 5px 0;
-    outline: none;
 }
 
-/* Estilo para el botón VER */
 .ver-link {
-    display: inline-block; 
-    background: #f8f9fa; 
-    color: var(--dark);
-    padding: 6px 12px; 
-    border-radius: 6px; 
-    text-decoration: none;
-    font-size: 0.75rem; 
-    font-weight: bold; 
-    border: 1px solid #ddd;
+    display: inline-block; background: #eee; color: var(--dark);
+    padding: 5px 10px; border-radius: 4px; text-decoration: none;
+    font-size: 0.75rem; font-weight: bold; border: 1px solid #ccc;
 }
 
-.ver-link:hover { background: #eee; border-color: #bbb; }
-
-/* CONTROLES ADMIN */
 .admin-btns { display: flex; gap: 10px; width: 100%; margin-bottom: 10px; }
-
-.btn-act { 
-    flex: 1; 
-    padding: 12px; 
-    border-radius: 8px; 
-    color: white; 
-    font-weight: bold; 
-    font-size: 0.9rem;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.btn-act:hover { filter: brightness(1.1); }
-.btn-act:active { transform: translateY(1px); box-shadow: none; }
-
-#btn-save { background: var(--verde); }
-
-.btn-x { 
-    background: #ffeded; 
-    color: #ff4d4d; 
-    border: 1px solid #ffcccc; 
-    padding: 5px 10px; 
-    border-radius: 5px; 
-    font-weight: bold;
-}
-
-.btn-x:hover { background: #ff4d4d; color: white; }
-
-.btn-logout { 
-    background: none; border: none; color: #888; 
-    font-size: 0.8rem; margin-top: 10px; text-decoration: underline;
-}
+.btn-act { flex: 1; padding: 12px; border-radius: 8px; border: none; color: white; font-weight: bold; }
+.btn-x { background: #ffeded; color: #ff4d4d; border: 1px solid #ffcccc; padding: 5px 8px; border-radius: 4px; cursor: pointer; }
+.btn-logout { background: none; border: none; color: #888; cursor: pointer; font-size: 0.8rem; margin-top: 10px; }
 
 .bld { font-weight: 700; }
-
-/* Para que los inputs deshabilitados se vean claros */
 input:disabled { opacity: 1; -webkit-text-fill-color: #000; color: #000; }
-
-/* Scrollbar sutil para la tabla en móviles */
-.tabla-container::-webkit-scrollbar { height: 4px; }
-.tabla-container::-webkit-scrollbar-thumb { background: #ccc; border-radius: 10px; }
